@@ -8,8 +8,8 @@ import {
 
 @Entity('users')
 class User {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
   @Column()
   name: string;
@@ -19,9 +19,6 @@ class User {
 
   @Column()
   password: string;
-
-  @Column()
-  avatar: string;
 
   @CreateDateColumn()
   created_at: Date;

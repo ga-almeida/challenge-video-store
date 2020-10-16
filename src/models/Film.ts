@@ -8,14 +8,14 @@ import {
 
 @Entity('films')
 class Film {
-  @PrimaryGeneratedColumn('uuid')
-  id: string;
+  @PrimaryGeneratedColumn('increment')
+  id: number;
 
   @Column()
-  titulo: string;
+  title: string;
 
   @Column()
-  diretor: string;
+  director: string;
 
   @Column('int')
   copys: number;

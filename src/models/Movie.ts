@@ -6,8 +6,8 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-@Entity('films')
-class Film {
+@Entity('movies')
+class Movie {
   @PrimaryGeneratedColumn('increment')
   id: number;
 
@@ -20,6 +20,9 @@ class Film {
   @Column('int')
   copys: number;
 
+  @Column('int')
+  storage: number;
+
   @CreateDateColumn()
   created_at: Date;
 
@@ -27,4 +30,4 @@ class Film {
   updated_at: Date;
 }
 
-export default Film;
+export default Movie;

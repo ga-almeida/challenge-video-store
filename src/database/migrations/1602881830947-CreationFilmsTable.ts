@@ -5,12 +5,13 @@ export default class CreationFilmsTable1602881830947
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'films',
+        name: 'movies',
         columns: [
           {
             name: 'id',
             type: 'int',
             isPrimary: true,
+            isGenerated: true,
             generationStrategy: 'increment',
           },
           {
@@ -24,6 +25,11 @@ export default class CreationFilmsTable1602881830947
           {
             name: 'copys',
             type: 'int',
+          },
+          {
+            name: 'storage',
+            type: 'int',
+            isNullable: true,
           },
           {
             name: 'created_at',
@@ -41,6 +47,6 @@ export default class CreationFilmsTable1602881830947
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('films');
+    await queryRunner.dropTable('movies');
   }
 }

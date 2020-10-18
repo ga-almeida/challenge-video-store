@@ -23,6 +23,12 @@
         "prettier"
     ],
     "rules": {
+      "no-await-in-loop":"off",
+      "no-var": "off",
+      "prefer-const": "off",
+      "no-param-reassign": "off",
+      "no-plusplus": "off",
+      "array-callback-return": "off",
       "class-methods-use-this": "off",
       "camelcase": "off",
       "prettier/prettier": "error",

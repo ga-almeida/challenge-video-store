@@ -20,7 +20,7 @@ rentedsRouter.post('/', async (request, response) => {
 
 rentedsRouter.post('/give-back', async (request, response) => {
   const { id } = request.user;
-  const rentedMovies = request.body;
+  const { rentedMovies } = request.body;
 
   const giveBackRentedMovieService = new GiveBackRentedMovieService();
 

@@ -18,9 +18,9 @@ class GiveBackRentedMovieService {
     const rentedsRepository = getRepository(Rented);
 
     const movies: number[] = [];
-    rentedMovies.map(r => {
-      movies.push(r.movie_id);
-    });
+    for (let index = 0; index < rentedMovies.length; index++) {
+      movies.push(rentedMovies[index].movie_id);
+    }
 
     if (movies && movies.length <= 0) {
       throw new AppError('No films were set.');
@@ -31,7 +31,7 @@ class GiveBackRentedMovieService {
     });
 
     if (allMoviesRented) {
-      if (allMoviesRented.length <= movies.length) {
+      if (allMoviesRented.length !== movies.length) {
         throw new AppError(
           'There are some reported movies that have not been rented.',
         );
@@ -43,15 +43,12 @@ class GiveBackRentedMovieService {
     const moviesBD = await moviesRepository.find({ id: In(movies) });
 
     const moviesAtt: Movie[] = [];
-    moviesBD.map(movie => {
-      allMoviesRented.map(rented => {
-        if (rented.id === movie.id) {
-          const newStorage = movie.storage + rented.amount;
-          movie.storage = newStorage;
-          moviesAtt.push(movie);
-        }
-      });
-    });
+    for (let index = 0; index < moviesBD.length; index++) {
+      const newStorage =
+        moviesBD[index].storage + allMoviesRented[index].amount;
+      moviesBD[index].storage = newStorage;
+      moviesAtt.push(moviesBD[index]);
+    }
 
     await moviesRepository.save(moviesAtt);
     await rentedsRepository.remove(allMoviesRented);

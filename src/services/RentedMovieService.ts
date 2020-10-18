@@ -34,11 +34,7 @@ class RentedMovieService {
         rentedAvailable.storage -= rentedMovies[index].amount;
         moviesAtt.push(rentedAvailable);
       }
-
-      console.log('oi');
     }
-
-    console.log('tchau');
 
     if (!rentedsAvailable) {
       throw new AppError('None of these movies can be rented.');
